@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Virendra Satav — Portfolio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --bg-secondary: #f5f5f3;
+      --text: #1a1a1a;
+      --text-secondary: #555551;
+      --text-tertiary: #999994;
+      --border: rgba(0,0,0,0.12);
+      --border-hover: rgba(0,0,0,0.25);
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1a1a;
+        --bg-secondary: #252525;
+        --text: #f0ede8;
+        --text-secondary: #a8a49e;
+        --text-tertiary: #666660;
+        --border: rgba(255,255,255,0.12);
+        --border-hover: rgba(255,255,255,0.25);
+      }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5rem;
+    }
+    .nav-name {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero { margin-bottom: 5rem; }
+    .hero-tag {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .hero-name {
+      font-size: 44px;
+      font-weight: 500;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .hero-desc {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      max-width: 520px;
+      margin-bottom: 2rem;
+    }
+    .hero-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid var(--border-hover);
+      color: var(--text);
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn:hover { background: var(--bg-secondary); }
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+    .btn-primary:hover { opacity: 0.85; background: var(--text); }
+
+    /* SECTIONS */
+    section { margin-bottom: 4rem; }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 1.25rem;
+    }
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    /* EXPERIENCE */
+    .exp-item {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .exp-date { font-size: 13px; color: var(--text-tertiary); padding-top: 2px; }
+    .exp-role { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+    .exp-company { font-size: 13px; color: var(--text-secondary); margin-bottom: 8px; }
+    .exp-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      background: var(--bg);
+      transition: border-color 0.15s;
+    }
+    .project-card:hover { border-color: var(--border-hover); }
+    .project-title { font-size: 15px; font-weight: 500; margin-bottom: 8px; }
+    .project-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 12px; }
+    .tag-row { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .skill-group-label { font-size: 13px; font-weight: 500; margin-bottom: 8px; }
+    .skill-list { display: flex; gap: 6px; flex-wrap: wrap; }
+
+    /* EDUCATION */
+    .edu-item {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .edu-date { font-size: 13px; color: var(--text-tertiary); padding-top: 2px; }
+    .edu-degree { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+    .edu-school { font-size: 13px; color: var(--text-secondary); margin-bottom: 4px; }
+    .edu-grade { font-size: 13px; color: var(--text-tertiary); }
+
+    /* ACHIEVEMENTS */
+    .achievements-list { list-style: none; }
+    .achievements-list li {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+    }
+    .achievements-list li:last-child { border-bottom: none; }
+    .achievements-list li::before { content: "—"; color: var(--text-tertiary); flex-shrink: 0; }
+
+    /* CONTACT */
+    .contact-row { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .contact-link {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+    .contact-link:hover { color: var(--text); }
+
+    /* FOOTER */
+    footer {
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-tertiary);
+      text-align: center;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 560px) {
+      .hero-name { font-size: 32px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .exp-item { grid-template-columns: 1fr; gap: 4px; }
+      .edu-item { grid-template-columns: 1fr; gap: 4px; }
+      nav { flex-direction: column; align-items: flex-start; gap: 1rem; margin-bottom: 3rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <nav>
+      <span class="nav-name">VS</span>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="https://linkedin.com/in/virendra-satav-375759271" target="_blank">LinkedIn</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <p class="hero-tag">Software Developer</p>
+      <h1 class="hero-name">Virendra Satav</h1>
+      <p class="hero-desc">Aspiring software developer with a strong interest in web development and embedded systems. Passionate about building responsive applications and solving real-world problems through code.</p>
+      <div class="hero-links">
+        <a class="btn btn-primary" href="mailto:virendrasatav7@gmail.com">Get in touch</a>
+        <a class="btn" href="https://linkedin.com/in/virendra-satav-375759271" target="_blank">LinkedIn ↗</a>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-label">Experience</p>
+      <hr class="divider">
+      <div class="exp-item">
+        <span class="exp-date">Nov 2024 – Mar 2025</span>
+        <div>
+          <p class="exp-role">Embedded Systems Intern</p>
+          <p class="exp-company">Athena Automation</p>
+          <p class="exp-desc">Built firmware in C/C++ for an Industry 4.0 machine monitoring system. Developed UART-over-SPI communication protocols and integrated W5500 Ethernet and RS232 modules for reliable industrial data transmission. Used tools like Putty and Serial Monitor to debug signal paths and resolve protocol issues.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <p class="section-label">Projects</p>
+      <hr class="divider">
+      <div class="projects-grid">
+        <div class="project-card">
+          <p class="project-title">Online Book Store</p>
+          <p class="project-desc">Full-stack web app for browsing, searching, and purchasing books. Features user authentication, shopping cart, and checkout.</p>
+          <div class="tag-row">
+            <span class="tag">React</span>
+            <span class="tag">Express.js</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Node.js</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <p class="project-title">QR &amp; Barcode Scanner</p>
+          <p class="project-desc">Real-time QR and 2D barcode scanning system using a camera module and microcontroller, transmitting decoded data over Wi-Fi for inventory management.</p>
+          <div class="tag-row">
+            <span class="tag">OpenCV</span>
+            <span class="tag">ZBar</span>
+            <span class="tag">Python</span>
+            <span class="tag">Wi-Fi</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-label">Skills</p>
+      <hr class="divider">
+      <div class="skills-grid">
+        <div>
+          <p class="skill-group-label">Languages</p>
+          <div class="skill-list">
+            <span class="tag">C</span>
+            <span class="tag">C++</span>
+            <span class="tag">Python</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+          </div>
+        </div>
+        <div>
+          <p class="skill-group-label">Web development</p>
+          <div class="skill-list">
+            <span class="tag">React.js</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Bootstrap</span>
+            <span class="tag">REST APIs</span>
+          </div>
+        </div>
+        <div>
+          <p class="skill-group-label">Tools &amp; platforms</p>
+          <div class="skill-list">
+            <span class="tag">VS Code</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Arduino IDE</span>
+            <span class="tag">Postman</span>
+          </div>
+        </div>
+        <div>
+          <p class="skill-group-label">Soft skills</p>
+          <div class="skill-list">
+            <span class="tag">Problem solving</span>
+            <span class="tag">Teamwork</span>
+            <span class="tag">Communication</span>
+            <span class="tag">Adaptability</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-label">Education</p>
+      <hr class="divider">
+      <div class="edu-item">
+        <span class="edu-date">2022 – 2026</span>
+        <div>
+          <p class="edu-degree">B.E. Electronics &amp; Telecommunication</p>
+          <p class="edu-school">Marathwada Mitra Mandal's College of Engineering, Pune</p>
+          <p class="edu-grade">CGPA 8.5</p>
+        </div>
+      </div>
+      <div class="edu-item">
+        <span class="edu-date">2020 – 2022</span>
+        <div>
+          <p class="edu-degree">HSC</p>
+          <p class="edu-school">Bharat Junior College, Pune</p>
+          <p class="edu-grade">72%</p>
+        </div>
+      </div>
+      <div class="edu-item">
+        <span class="edu-date">2019 – 2020</span>
+        <div>
+          <p class="edu-degree">SSC</p>
+          <p class="edu-school">St. Joseph Boys' High School, Pune</p>
+          <p class="edu-grade">89.60%</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-label">Achievements</p>
+      <hr class="divider">
+      <ul class="achievements-list">
+        <li>Ranked 22 out of 70 teams in the Internal SIH Hackathon 2024 at MMCOE</li>
+        <li>Ranked 5th in the entire school during SSC Board Exams (2020) at St. Joseph Boys' High School, Pune</li>
+        <li>Coordinator — DEXTERITY 2K24, National Level Technical Event (Oct 2024)</li>
+        <li>VLSI Design using Verilog HDL — Skill Development Program (Aug 2024)</li>
+        <li>Smart India Hackathon 2024 — Certificate of Participation (Sept 2024)</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <p class="section-label">Contact</p>
+      <hr class="divider">
+      <div class="contact-row">
+        <a class="contact-link" href="mailto:virendrasatav7@gmail.com">virendrasatav7@gmail.com</a>
+        <a class="contact-link" href="tel:+919545949401">+91 9545949401</a>
+        <a class="contact-link" href="https://linkedin.com/in/virendra-satav-375759271" target="_blank">LinkedIn ↗</a>
+      </div>
+    </section>
+
+    <footer>
+      &copy; 2026 Virendra Satav · Pune, Maharashtra
+    </footer>
+
+  </div>
+</body>
+</html>
