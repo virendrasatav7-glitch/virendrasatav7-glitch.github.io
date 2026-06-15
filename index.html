@@ -391,25 +391,29 @@
       &copy; 2026 Virendra Satav · Pune, Maharashtra
     </footer>
 
- <script>
-(function () {
-  const iframe = document.createElement("iframe");
+<!-- Technotreon AI Chatbot -->
+<div id="technotreon-chatbot-container"></div>
 
-  iframe.src = "YOUR_RENDER_URL/chatbot.html";
+<script>
+(function() {
+    const iframe = document.createElement("iframe");
 
-  Object.assign(iframe.style, {
-    position: "fixed",
-    bottom: "20px",
-    right: "20px",
-    width: "420px",
-    height: "85vh",
-    maxHeight: "750px",
-    border: "none",
-    zIndex: "9999999",
-    background: "transparent"
-  });
+    iframe.src = "https://YOUR-RENDER-URL.onrender.com/chatbot.html";
 
-  document.body.appendChild(iframe);
+    iframe.style.position = "fixed";
+    iframe.style.bottom = "0";
+    iframe.style.right = "0";
+    iframe.style.width = "450px";
+    iframe.style.height = "100vh";
+    iframe.style.border = "none";
+    iframe.style.background = "transparent";
+    iframe.style.zIndex = "999999";
+    iframe.style.overflow = "hidden";
+
+    iframe.setAttribute("title", "Technotreon AI Assistant");
+    iframe.setAttribute("allow", "clipboard-write");
+
+    document.body.appendChild(iframe);
 })();
 </script>
 </body>
