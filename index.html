@@ -392,23 +392,24 @@
     </footer>
 
  <script>
-(function() {
-    const iframe = document.createElement("iframe");
+(function () {
+  const iframe = document.createElement("iframe");
 
-    iframe.src = "https://technotreon-chatbot.onrender.com";
+  iframe.src = "YOUR_RENDER_URL/chatbot.html";
 
-    iframe.style.position = "fixed";
-    iframe.style.position = "fixed";
-iframe.style.bottom = "20px";
-iframe.style.right = "20px";
-iframe.style.width = "400px";
-iframe.style.height = "80vh";
-iframe.style.maxHeight = "700px";
-iframe.style.border = "none";
-iframe.style.zIndex = "999999";
-    iframe.style.background = "transparent";
+  Object.assign(iframe.style, {
+    position: "fixed",
+    bottom: "20px",
+    right: "20px",
+    width: "420px",
+    height: "85vh",
+    maxHeight: "750px",
+    border: "none",
+    zIndex: "9999999",
+    background: "transparent"
+  });
 
-    document.body.appendChild(iframe);
+  document.body.appendChild(iframe);
 })();
 </script>
 </body>
